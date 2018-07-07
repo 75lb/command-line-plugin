@@ -1,7 +1,7 @@
 {
   "name": "command-line-plugin",
   "author": "Lloyd Brookes <75pound@gmail.com>",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "command-line-plugin",
   "repository": "https://github.com/75lb/command-line-plugin.git",
   "keywords": [],
