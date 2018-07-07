@@ -27,7 +27,7 @@ function * pluginOptionDefinitions (options, cliOptions, optionDefinitions) {
   for (const def of optionDefinitions) {
     if (def.plugin) {
       const pluginRequests = arrayify(cliOptions[def.name])
-      const Plugins = pluginRequests.map(p => loadModule(p, { paths: options.paths }))
+      const Plugins = pluginRequests.map(p => loadModule(p, { paths: options.paths, prefix: options.prefix }))
       for (const Plugin of Plugins) {
         const plugin = options.create(Plugin)
         if (plugin.optionDefinitions) yield plugin.optionDefinitions()
