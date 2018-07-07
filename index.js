@@ -1,3 +1,7 @@
+/**
+ * @param {object} [options]
+ * @param {string[]} [options.paths]
+ */
 function commandLinePlugin (optionDefinitions, options) {
   options = options || {}
   const commandLineArgs = require('command-line-args')
@@ -23,10 +27,10 @@ function * pluginOptionDefinitions (options, cliOptions, optionDefinitions) {
   for (const def of optionDefinitions) {
     if (def.plugin) {
       const pluginRequests = arrayify(cliOptions[def.name])
-      const Plugins = pluginRequests.map(p => loadModule(p, { paths: '.' }))
+      const Plugins = pluginRequests.map(p => loadModule(p, { paths: options.paths }))
       for (const Plugin of Plugins) {
         const plugin = options.create(Plugin)
-        yield plugin.optionDefinitions()
+        if (plugin.optionDefinitions) yield plugin.optionDefinitions()
       }
     }
   }
