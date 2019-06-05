@@ -1,10 +1,10 @@
-const TestRunner = require('test-runner')
+const Tom = require('test-runner').Tom
 const commandLinePlugin = require('./')
 const a = require('assert')
 
-const runner = new TestRunner()
+const tom = module.exports = new Tom('clp')
 
-runner.test('simple', function () {
+tom.test('simple', function () {
   const optionDefinitions = [
     { name: 'one' },
     { name: 'plugin', plugin: true }
@@ -23,7 +23,7 @@ runner.test('simple', function () {
   ])
 })
 
-runner.test('empty plugin class', function () {
+tom.test('empty plugin class', function () {
   const optionDefinitions = [
     { name: 'one' },
     { name: 'plugin', plugin: true }
